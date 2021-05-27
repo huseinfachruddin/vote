@@ -8,8 +8,8 @@ axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || 'https://t
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.defaults.headers.post['withCredentials'] = 'true';
-// axios.defaults.headers.post['Accept'] = 'application/json';
-// axios.defaults.headers.post['Access-Control-Allow-Credentials'] = 'true';
+axios.defaults.headers.post['Accept'] = 'application/json';
+axios.defaults.headers.post['Access-Control-Allow-Credentials'] = 'true';
 
 // axios.defaults.headers.post['xsrfCookieName'] = '__test=36ef558dea3dbc55f8f8cb825d1d68b5';
 
