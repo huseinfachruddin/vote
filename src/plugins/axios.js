@@ -4,7 +4,8 @@ import Vue from 'vue';
 import axios from "axios";
 
 // Full config:  https://github.com/axios/axios#request-config
-axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || 'https://trustluggage.herokuapp.com/';
+
+axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || 'http://laravel-sanctum.test:81/';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.defaults.headers.post['withCredentials'] = 'true';
@@ -12,10 +13,13 @@ axios.defaults.headers.post['Accept'] = 'application/json';
 axios.defaults.headers.post['Access-Control-Allow-Credentials'] = 'true';
 
 // axios.defaults.headers.post['xsrfCookieName'] = '__test=36ef558dea3dbc55f8f8cb825d1d68b5';
-
+// axios.defaults.headers.common = {
+//   'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+//   'X-Requested-With': 'XMLHttpRequest'
+// };
 
 let config = {
-  baseURL: process.env.baseURL || process.env.apiUrl || "https://trustluggage.herokuapp.com/",
+  baseURL: process.env.baseURL || process.env.apiUrl || "http://laravel-sanctum.test:81/",
   // timeout: 60 * 1000, // Timeout
   withCredentials: true, // Check cross-site Access-Control
 };
