@@ -68,7 +68,7 @@ export default{
         },
         async receiptForUp({commit},noResi){
             try {
-                let response = await axios.get('/api/receipt'+noResi,{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
+                let response = await axios.get('/api/receipt/'+noResi,{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                 if (response.status==200) {
                     let receipt =response.data.receipt
                     commit('setForm',receipt)
