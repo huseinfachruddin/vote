@@ -125,6 +125,7 @@ export default{
             commit('setLoading',true)
             try {
               let response = await axios.get('/api/roles',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}});
+              console.log(response.headers)
               if (response.status==200){
                 commit('setRole',response.data.role)
                 commit('setLoading',false)

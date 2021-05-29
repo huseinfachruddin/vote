@@ -53,7 +53,7 @@ export default{
         },
         async receipt({commit},noResi){
             try {
-                let response = await axios.get('/api/receipt/'+noResi,{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
+                let response = await axios.get('/api/receipt'+noResi,{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                 if (response.status==200) {
                     let receipt =response.data.receipt
                     commit('setReceipt',receipt)
@@ -68,7 +68,7 @@ export default{
         },
         async receiptForUp({commit},noResi){
             try {
-                let response = await axios.get('/api/receipt/'+noResi,{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
+                let response = await axios.get('/api/receipt'+noResi,{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                 if (response.status==200) {
                     let receipt =response.data.receipt
                     commit('setForm',receipt)
@@ -83,7 +83,7 @@ export default{
         },
         async getReceipts({commit}){
             try {
-                let response = await axios.get('/api/receipts/',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
+                let response = await axios.get('/api/receipts',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                 if (response.status==200) {
                     let receipt =response.data.receipt
                     commit('setReceipts',receipt)
@@ -97,13 +97,14 @@ export default{
         },
         async getStatus({commit}){
             try {
-                let response = await axios.get('/api/statuses/',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
+                let response = await axios.get('/api/statuses',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
+                console.log('response.headers')
                 if (response.status==200) {
                     let status =response.data.status
                     commit('setStatus',status)
                 }  
             } catch (errors) {
-                console.log(errors.response.data.errors)
+                console.log(errors.response)
                 commit('setErrors',errors.response.data)
                 commit('setReceipts',null)
             }

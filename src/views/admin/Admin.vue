@@ -53,7 +53,6 @@ import Sidebar from "../../components/Sidebar.vue";
 import Status from "../../components/Status.vue";
 import Role from "../../components/Role.vue";
 
-import axios from 'axios'
 
 export default {
   components: {
@@ -74,20 +73,11 @@ export default {
     },
   },
   mounted() {
-    this.get(),
     this.$store.dispatch("profile");
   },
   methods: {
     getProfile() {
       return this.$store.dispatch("profile");
-    },
-    async get(){
-      console.log('halooooooooooo')
-                let response = await axios.get('/api/roles/',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
-                if (response.status==200) {
-                    console.log(response.data.receipt)
-                }  
-
     }
   },
 };

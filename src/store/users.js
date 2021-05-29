@@ -54,7 +54,7 @@ export default{
         },
         async getUsers({commit}){
             try {
-                let response = await axios.get('/api/users/',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
+                let response = await axios.get('/api/users',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                 if (response.status==200) {
                     let users =response.data.user
                     commit('setUsers',users)
@@ -81,6 +81,7 @@ export default{
         },
         async getRoles({commit}){
             try {
+                console.log("response")
                 let response = await axios.get('/api/roles',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                 if (response.status==200) {
                     let roles =response.data.role
