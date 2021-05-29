@@ -58,10 +58,8 @@ export default{
                     let receipt =response.data.receipt
                     commit('setReceipt',receipt)
                     commit('setErrors',false)
-                    console.log(receipt)
                 }  
             } catch (errors) {
-                console.log(errors.response.data.errors)
                 commit('setErrors',errors.response.data)
                 commit('setReceipt',null)
             }
@@ -73,10 +71,8 @@ export default{
                     let receipt =response.data.receipt
                     commit('setForm',receipt)
                     commit('setErrors',false)
-                    console.log(receipt)
                 }  
             } catch (errors) {
-                console.log(errors.response.data.errors)
                 commit('setErrors',errors.response.data)
                 commit('setForm',null)
             }
@@ -90,7 +86,6 @@ export default{
                     commit('setErrors',false)
                 }  
             } catch (errors) {
-                console.log(errors.response.data.errors)
                 commit('setErrors',errors.response.data)
                 commit('setReceipts',null)
             }
@@ -98,13 +93,11 @@ export default{
         async getStatus({commit}){
             try {
                 let response = await axios.get('/api/statuses',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
-                console.log('response.headers')
                 if (response.status==200) {
                     let status =response.data.status
                     commit('setStatus',status)
                 }  
             } catch (errors) {
-                console.log(errors.response)
                 commit('setErrors',errors.response.data)
                 commit('setReceipts',null)
             }
@@ -118,7 +111,6 @@ export default{
                     commit('setErrors',false)
                 }  
             } catch (errors) {
-                console.log(errors.response.data.errors)
                 commit('setErrors',errors.response.data)
                 commit('setReceipts',null)
             }
@@ -127,12 +119,10 @@ export default{
             try {
                 let response = await axios.put('/api/sender/'+form.id+'/update',form,{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                 if (response.status==200) {
-                    console.log(response.data)
                     commit('setErrorsSender',false)
                     alert('data berhasil di ubah')
                 }  
             } catch (errors) {
-                console.log(errors.response.data.errors)
                 commit('setErrorsSender',errors.response.data.errors)
             }
         },
@@ -140,12 +130,10 @@ export default{
             try {
                 let response = await axios.put('/api/receiver/'+form.id+'/update',form,{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                 if (response.status==200) {
-                    console.log(response.data)
                     commit('setErrorsReceiver',false)
                     alert('data berhasil di ubah')
                 }  
             } catch (errors) {
-                console.log(errors.response.data.errors)
                 commit('setErrorsReceiver',errors.response.data.errors)
             }
         },
@@ -153,7 +141,6 @@ export default{
             try {
                 let response = await axios.put('/api/receipt/'+form.id+'/update',form,{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                 if (response.status==200) {
-                    console.log(response.data)
                     commit('setErrorsReceipt',false)
                     alert('data berhasil di ubah')
 
@@ -185,7 +172,6 @@ export default{
                     router.push('/admin/receipt')
                 }  
             } catch (errors) {
-                console.log(errors.response.data.errors)
                 commit('setErrors',errors.response.data.errors)
                 commit('setReceipts',null)
             }
@@ -219,7 +205,6 @@ export default{
             let pilih = window.confirm("Yakin Akan Menghapus?");
             if (pilih) {
                 try {
-                    console.log()
                     let response = await axios.delete('/api/receipt/'+data+'/delete',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                     if (response.status==200) {
                         commit('setSuccess',response.data.success)
@@ -234,7 +219,6 @@ export default{
             let pilih = window.confirm("Yakin Akan Menghapus?");
             if (pilih) {
                 try {
-                    console.log()
                     let response = await axios.delete('/api/status/'+data.id+'/delete',{headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}})
                     if (response.status==200) {
                         commit('setSuccess',response.data.success)
