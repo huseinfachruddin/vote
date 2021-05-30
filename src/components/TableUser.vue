@@ -11,7 +11,7 @@
       
     <v-spacer></v-spacer>
             <div class="ma-3">
-              <router-link style="text-decoration:none" to="/receipt/new">
+              <router-link style="text-decoration:none" to="/register">
                 <v-btn small solo class="success">
                   <v-icon>mdi-account-multiple-plus</v-icon>
                   tambah user
