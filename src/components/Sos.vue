@@ -28,25 +28,17 @@
       return {
           buttons:[
             {
-            icon:'mdi-github',
-            link:'https://github.com/huseinfachruddin'
-            },
-            {
             icon:'mdi-facebook',
-            link:'https://www.facebook.com/fachruddin.ilmii/'
+            link:'https://www.facebook.com/trust.luggage.3/'
             },
             {
             icon:'mdi-instagram',
-            link:'https://www.instagram.com/husein_fachruddin/'
+            link:'https://www.instagram.com/trust.luggage/'
             },
             {
             icon:'mdi-whatsapp',
             link:'https://wa.me/6282154926482'
             },
-            {
-            icon:'mdi-linkedin',
-            link:'https://www.linkedin.com/in/husein-fachruddin-5b4329205/'
-            }
           ]
       }
     },

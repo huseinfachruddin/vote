@@ -7,7 +7,8 @@
         contain
         height="90"
         src="../../assets/bw.png" />
-        banguntapan,yogyakarta
+        <span>Email: trustluggage@gmail.com, </span>
+        <span>Website: {{domain}}</span>
     </v-row>
       <v-row>
         <v-col
@@ -105,6 +106,7 @@ export default {
   data(){
     return{
       data:false,
+      domain:'www.'+window.location.hostname,
       value: null,
       size:150
     }
@@ -115,8 +117,7 @@ export default {
     }
   },
   mounted(){
-    this.getReceipt(),
-    console.log(window.location.origin + this.$route.path)
+    this.getReceipt()
   },
   methods:{
     formatPrice(value) {

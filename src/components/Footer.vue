@@ -16,7 +16,7 @@
     >
       <div v-for="link in links"
           :key="link.name">
-        <router-link :to="{name:link.to,hash:'#aku'}" style="text-decoration: none;">
+        <router-link :to="{path:link.to,hash:'#aku'}" style="text-decoration: none;">
         <v-btn
           color="white"
           text
@@ -31,7 +31,7 @@
         class="teal darken-3 py-4 text-center white--text"
         cols="12"
       >
-        {{ new Date().getFullYear() }} — <strong>Trust Luggage</strong>
+        {{ new Date().getFullYear() }} — <strong>trustluggage</strong>
       </v-col>
     </v-row>
       </v-container>
@@ -45,26 +45,10 @@ import Sos from './Sos.vue'
     data: () => ({
       links: [
       {
-        name:'Home',
-        to:"home"
+        name:'trustluggage@gmail.com',
+        to:"trustluggage@gmail.com"
       },
-      {
-        name:'Design',
-        to:"project.design"
-      },
-      {
-        name:'Back-end',
-        to:"project.backend"
-      },
-      {
-        name:'Front-end',
-        to:"project.frontend"
-      },
-      {
-        name:'Profile',
-        to:"profile"
-      },
-      ],
+      ]
     }),
   }
 </script>

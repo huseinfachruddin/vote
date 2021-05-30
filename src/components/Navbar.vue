@@ -10,11 +10,11 @@
     </v-toolbar-title> 
 
       <v-spacer></v-spacer>
-      <router-link style="text-decoration:none" to="/">
+      <a style="text-decoration:none" href="tel:62 822-2573-4881">
         <v-btn color="white" rounded small outlined fab class="ma-2 pa-1">
           <v-icon>mdi-phone</v-icon>
         </v-btn>
-      </router-link>
+      </a>
       <router-link style="text-decoration:none" to="/direct" v-if="loggedin">
         <v-btn color="white" rounded small outlined fab class="ma-2 pa-1">
           <v-icon>mdi-key</v-icon>

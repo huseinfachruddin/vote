@@ -15,25 +15,33 @@
               </router-link>
             </div>
             <div class="ma-3">
+              <router-link style="text-decoration:none" to="/receipt/new">
+                <v-btn small solo class="success">
+                  <v-icon>mdi-account-multiple-plus</v-icon>
+                  tambah user
+                </v-btn>
+              </router-link>
+            </div>
+            <div class="ma-3">
               <v-btn
                 small
                 solo
-                class="success"
+                class="info"
                 @click="(status = true), (role = false)"
               >
                 <v-icon>mdi-format-list-checks</v-icon>
-                olah status
+                data status
               </v-btn>
             </div>
             <div class="ma-3">
               <v-btn
                 small
                 solo
-                class="success"
+                class="info"
                 @click="(status = false), (role = true)"
               >
                 <v-icon>mdi-account-key</v-icon>
-                olah role
+                data role
               </v-btn>
             </div>
           </v-row>

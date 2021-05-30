@@ -7,6 +7,19 @@
       <v-spacer></v-spacer>
     </v-card-title>
     <v-card-title>
+
+      
+    <v-spacer></v-spacer>
+            <div class="ma-3">
+              <router-link style="text-decoration:none" to="/receipt/new">
+                <v-btn small solo class="success">
+                  <v-icon>mdi-account-multiple-plus</v-icon>
+                  tambah user
+                </v-btn>
+              </router-link>
+            </div>
+    </v-card-title>
+    <v-card-title>
         <v-col
           cols="12"
           sm="6"

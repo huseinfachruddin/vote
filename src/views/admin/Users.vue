@@ -2,8 +2,8 @@
   <div class="admin">
   <!-- <Navbar/> -->
   <Sidebar/>
-  <Table/>
 
+  <Table/>
 
   </div>
 </template>
