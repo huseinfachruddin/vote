@@ -1,24 +1,21 @@
 <template>
-<div id="home">
+<div >
 <Navbar/>
 <v-container fluid>
 <v-row>
-          <Carousel/>
+    <Carousel/>
 </v-row>
-</v-container>
-<div class="teal darken-3 d-flex justify-center white--text  text-center align-center pa-5" style="height:250px">
-  <v-container>
-        <v-row class="d-flex justify-center my-10">
-          <v-img
+        <v-row class="d-flex justify-center teal darken-3 d-flex justify-center white--text  text-center align-center pa-5">
+        <v-col>
+        <v-img
           contain
-          height="100"
-          src="../assets/logo3.png" />
-        </v-row>
-        <v-row class="d-flex justify-center ma-10">
+          height="80"
+          src="../assets/logo3.png"
+          class="ma-3"/>
           <p>Kami mempermudah pengiriman anda</p>
+        </v-col>
         </v-row>
-  </v-container>
-</div>
+  </v-container> 
 <div class="grd-up">
   <div class="custom-shape-divider-top-1613764162">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -28,16 +25,12 @@
     </svg>
   </div>
 <div class="grd-end">
-    <v-row class="d-flex justify-center">
         <About/>
-    </v-row>
 </div>
-<v-row>
     <Search/>
-</v-row>
 
   </div>
-<Footer/>
+<Footer/> 
 </div>
 </template>
 
