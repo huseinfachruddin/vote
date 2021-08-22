@@ -1,16 +1,34 @@
 <template>
   <v-app>
-    <Loading/>
-<router-view/>
+    <div class="bg">
+        <Navbar/>
+          <router-view/>
+        <Footer/>
+    </div>
   </v-app>
 </template>
 
+<style>
+.bg{
+    background: url('./assets/bg.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: "Georgia", "Courier New", monospace;
+    height: 100%;
+  }
+
+</style>
+
 <script>
-import Loading from './components/Loading'
+import Footer from './components/Footer.vue';
+import Navbar from './components/Navbar'
 
 export default {
   components:{
-    Loading
+    Navbar,
+    Footer
   }
 
 };

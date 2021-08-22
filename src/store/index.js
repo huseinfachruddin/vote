@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './auth'
-import receipt from './receipt'
-import users from './users'
+import content from './content'
+
 
 
 Vue.use(Vuex)
@@ -19,7 +19,7 @@ export default new Vuex.Store({
     },
     modules:{
         auth,
-        receipt,
-        users
+        content,
+
     }
 })

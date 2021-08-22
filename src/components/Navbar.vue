@@ -1,60 +1,42 @@
 <template>
 <div id="navbar">
     <v-toolbar 
-    color="teal darken-3" class="white--text " >
+    color="" class="bg white--text d-flex justify-center">
     <v-toolbar-title>
-        <v-img class=""
-        max-height="100"
-        max-width="70"
-        src="../assets/logo2.png" />
+        <v-img 
+
+        max-width="40"
+        src="../assets/hmj.png" />
     </v-toolbar-title> 
+    <h3 class="ma-1">Pustaka Ilmu Politik</h3>
 
       <v-spacer></v-spacer>
-      <a style="text-decoration:none" href="tel:62 822-2573-4881">
-        <v-btn color="white" rounded small outlined fab class="ma-2 pa-1">
-          <v-icon>mdi-phone</v-icon>
-        </v-btn>
-      </a>
-      <router-link style="text-decoration:none" to="/direct" v-if="loggedin">
-        <v-btn color="white" rounded small outlined fab class="ma-2 pa-1">
-          <v-icon>mdi-key</v-icon>
-        </v-btn>
-      </router-link>
-            <BtnLogin v-if="!loggedin"/>
-            <BtnLogout v-if="loggedin"/>
+
     </v-toolbar>
 
   </div>
 </template>
 
+<style >
+
+</style>
 
 <script>
-import BtnLogout from './BtnLogout.vue';
-import BtnLogin from './BtnLogin.vue';
 
 
 export default {
   components: { 
-    BtnLogout,
-    BtnLogin
+
     },
     data(){
       return{
-        loggedin:false,
-        token:localStorage.getItem('token'),
+
         }
     },
     mounted(){
-        this.cek()
     },
     methods:{
-      cek(){
-        if (!this.token) {
-            this.loggedin=false
-        }else{
-            this.loggedin=true
-        }
-      }
+
     }
 };
 </script>
