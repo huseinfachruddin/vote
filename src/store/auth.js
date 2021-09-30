@@ -10,7 +10,6 @@ export default{
         errors:{},
         loading:false
 
-
     },
     getters:{
         profile(state){

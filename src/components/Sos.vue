@@ -36,9 +36,18 @@
             link:'https://www.instagram.com/trust.luggage/'
             },
             {
+            icon:'mdi-linkedin',
+            link:'https://www.instagram.com/trust.luggage/'
+            },
+            {
             icon:'mdi-whatsapp',
             link:'https://wa.me/6281215663393'
             },
+            {
+            icon:'mdi-youtube',
+            link:'https://wa.me/6281215663393'
+            },
+            
           ]
       }
     },

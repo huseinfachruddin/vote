@@ -37,7 +37,6 @@
                 </a>
               </v-col>
             </v-flex>
-
         </v-row>
     </v-container>
 </div>

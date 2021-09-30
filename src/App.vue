@@ -10,7 +10,7 @@
 
 <style>
 .bg{
-    background: url('./assets/bg.jpg') no-repeat center center fixed; 
+    background: url('https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
