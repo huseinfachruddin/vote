@@ -31,8 +31,8 @@
           </v-col>
         </v-row>
       </v-parallax>
-        <Content/>
   </v-container>
+        <Content/>
 </app>
 </template>
 

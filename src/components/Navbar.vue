@@ -3,7 +3,7 @@
     <v-toolbar 
     color="yellow accent-4">
       <v-spacer></v-spacer>
-      <v-toolbar-title class=" d-flex justify-center">
+      <v-toolbar-title class="d-flex justify-center">
           <v-img 
           max-width="40"
           src="../assets/hmj.png" />
@@ -39,21 +39,18 @@
       </v-list-item>
 
       <v-divider></v-divider>
-          <v-list-item>
-            <v-list-item-title>Foo</v-list-item-title>
-          </v-list-item>
+        <v-treeview :items="items" right>
+            <template v-slot:label="{item}">
+              <v-list-item>
+                <v-list-item-title v-if="!(item.children==[])">{{item.name}}</v-list-item-title>
+                <v-list-item-title v-if="(item.children==[])">{{id}}</v-list-item-title>
+              </v-list-item> 
+            </template>
 
-          <v-list-item>
-            <v-list-item-title>Bar</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Fizz</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>Buzz</v-list-item-title>
-          </v-list-item>
+        </v-treeview>
+              <v-list-item>
+                <v-list-item-title>data</v-list-item-title>
+              </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -70,6 +67,20 @@
     data: () => ({
       drawer: false,
       group: null,
+      items: [
+        {
+          id: 1,
+          name: 'Applications :',
+          children: [{
+            id: 2,
+            name: 'Applications :',
+            children: [
+              { id: 4, name: 'Calendar : app' ,children:[]},
+              { id: 3, name: 'Chrome : app' ,children:[]},
+              { id: 5, name: 'Webstorm : app' ,children:[]},
+            ],
+          }]
+        }]
     }),
 
     watch: {

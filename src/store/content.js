@@ -8,20 +8,20 @@ export default{
 
     },
     mutations:{
-        setForm(state,form){
-            state.form=form
+        setForm(state,data){
+            state.form=data
         },
-        setContent(state,content){
-            state.content=content        
+        setContent(state,data){
+            state.content=data        
         },
-        setErrors(state,content){
-          state.content=content        
+        setErrors(state,data){
+          state.errors=data        
       },
     },
     actions:{
-        async getContent({commit}){
+        async getContent({commit},page){
             try{
-                let response = await axios.get('/api/content')
+                let response = await axios.get('/api/content?page='+page)
                 if (response.status == 200) {
                     commit('setContent',response.data.content)
                 }
@@ -45,10 +45,11 @@ export default{
             let response = await axios.post('/api/content/create',data)
             if (response.status == 200) {
                 commit('setForm',{})
-                console.log(response.data.content)
+                commit('setErrors',{})
+
             }
         }catch(errors){
-            commit('setErrors',errors)
+            commit('setErrors',errors.response.data.errors)
         }
     },  
     async deleteContent({commit},data){

@@ -3,7 +3,6 @@
     <div class="bg">
         <Navbar/>
           <router-view/>
-        <Footer/>
     </div>
   </v-app>
 </template>
@@ -22,13 +21,11 @@
 </style>
 
 <script>
-import Footer from './components/Footer.vue';
 import Navbar from './components/Navbar'
 
 export default {
   components:{
     Navbar,
-    Footer
   }
 
 };
