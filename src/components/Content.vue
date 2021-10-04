@@ -39,7 +39,7 @@
                       color="yellow"
                       small
                     >
-                    read
+                    open
                     </v-btn>
                   </v-card-actions>
                 </v-card>

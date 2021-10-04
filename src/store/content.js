@@ -29,6 +29,16 @@ export default{
                 commit('setErrors',errors)
             }
         },
+        async getContentCategory({commit},data){
+            try{
+                let response = await axios.get('/api/content/category/'+data)
+                if (response.status == 200) {
+                    commit('setContent',response.data.content)
+                }
+            }catch(errors){
+                commit('setErrors',errors)
+            }
+        },
         async getSearchContent({commit},data){
           try{
               let response = await axios.post('/api/content/search',data)
@@ -45,8 +55,8 @@ export default{
             let response = await axios.post('/api/content/create',data)
             if (response.status == 200) {
                 commit('setForm',{})
-                commit('setErrors',{})
-
+                commit('setErrors',[])
+                console.log(response.data);
             }
         }catch(errors){
             commit('setErrors',errors.response.data.errors)

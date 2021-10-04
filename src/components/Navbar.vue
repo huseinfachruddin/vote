@@ -2,6 +2,7 @@
 <div id="navbar">
     <v-toolbar 
     color="yellow accent-4">
+    <v-app-bar-nav-icon @click.stop="drawer = !drawer" ></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
       <v-toolbar-title class="d-flex justify-center">
           <v-img 
@@ -10,13 +11,12 @@
       <h3 class="ma-1 black--text">PERPUSPOL</h3>
       </v-toolbar-title> 
       <v-spacer></v-spacer>
-    <v-app-bar-nav-icon @click.stop="drawer = !drawer" ></v-app-bar-nav-icon>
 
     </v-toolbar>
       <v-navigation-drawer
       v-model="drawer"
       absolute
-      right
+      left
       temporary
     >
       <v-list
@@ -39,18 +39,23 @@
       </v-list-item>
 
       <v-divider></v-divider>
-        <v-treeview :items="items" right>
-            <template v-slot:label="{item}">
+      <router-link to="/home" style="text-decoration: none;">
               <v-list-item>
-                <v-list-item-title v-if="!(item.children==[])">{{item.name}}</v-list-item-title>
-                <v-list-item-title v-if="(item.children==[])">{{id}}</v-list-item-title>
+                <v-list-item-title >HOME</v-list-item-title>
               </v-list-item> 
-            </template>
-
-        </v-treeview>
+              </router-link>
+        <v-treeview :items="menu" open-on-click>
+            <template v-slot:label="menu">
+              <v-list-item v-if="menu.item.children.length">
+                <v-list-item-title>{{menu.item.name}}</v-list-item-title>
+              </v-list-item> 
+              <router-link v-if="!menu.item.children.length" :to="'/content/category/'+menu.item.id" style="text-decoration: none;">
               <v-list-item>
-                <v-list-item-title>data</v-list-item-title>
-              </v-list-item>
+                <v-list-item-title >{{menu.item.name}}</v-list-item-title>
+              </v-list-item> 
+              </router-link>
+            </template>
+        </v-treeview>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -70,23 +75,44 @@
       items: [
         {
           id: 1,
-          name: 'Applications :',
+          name: 'Agama',
           children: [{
             id: 2,
-            name: 'Applications :',
-            children: [
-              { id: 4, name: 'Calendar : app' ,children:[]},
-              { id: 3, name: 'Chrome : app' ,children:[]},
-              { id: 5, name: 'Webstorm : app' ,children:[]},
-            ],
+            name: 'Fisipol',
+            children: [],
           }]
         }]
     }),
-
-    watch: {
-      group () {
-        this.drawer = false
+    computed:{
+      category(){
+        return this.$store.state.category.category;
       },
+      menu(){
+        return this.$store.state.category.menu;
+      },
+      form(){
+        return this.$store.state.content.form;
+      },
+      errors(){
+        return this.$store.state.content.errors;
+      },
+    },
+    methods:{
+      getCategory(){
+        this.$store.dispatch('getCategory')
+      },
+      getCategoryTree(){
+        this.$store.dispatch('getCategoryTree')
+      },
+      async save(form){
+        await this.$store.dispatch('createContent',form)
+        await this.getContent()
+        this.loading=false
+      },
+    },
+    mounted() {
+      this.getCategoryTree()
+      console.log(this.menu)
     },
   }
 </script>

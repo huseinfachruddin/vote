@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <div class="bg">
-        <Navbar/>
-          <router-view/>
-    </div>
+    <Navbar/>
+    <v-container fluid class="bg" >
+          <router-view temporary/>
+    </v-container>
   </v-app>
 </template>
 
@@ -17,7 +17,9 @@
     font-family: "Georgia", "Courier New", monospace;
     height: 100%;
   }
-
+router-link a{
+    text-decoration: none ;
+}
 </style>
 
 <script>
