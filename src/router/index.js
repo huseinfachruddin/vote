@@ -33,7 +33,7 @@ const routes = [
     }
   },
     { path: '/404', component: Home },  
-    { path: '*', redirect: '/404' },  
+    { path: '*', redirect: '/404' },
 
 ];
 
