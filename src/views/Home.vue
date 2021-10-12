@@ -46,6 +46,8 @@ export default {
   Sos,
   Content
   },
-  
+  mounted(){
+      this.$store.dispatch('getContentCategory',this.$route.params.id)
+  },
 }
 </script>

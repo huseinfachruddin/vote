@@ -31,7 +31,8 @@ export default{
         },
         async getContentCategory({commit},data){
             try{
-                let response = await axios.get('/api/content/category/'+data)
+                console.log(data)
+                let response = await axios.get('/api/content/category/'+data.id+'?page='+data.page)
                 if (response.status == 200) {
                     commit('setContent',response.data.content)
                 }

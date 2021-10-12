@@ -10,7 +10,7 @@
           justify="center"
         >
             <h3 class="text-h5 white--text mb-4">
-              Category {{$route.params.id}}
+              Category {{$route.params.name}}
             </h3>
         </v-row>
       </v-paralax>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Content from '../components/Content.vue'
+import Content from '../components/Content-Category.vue'
 
 export default {
   components:{
@@ -31,8 +31,8 @@ export default {
     }
   },
   methods:{
-    getContentCategory(){
-      this.$store.dispatch('getContentCategory',this.$route.params.id)
+    getContentCategory(data){
+      this.$store.dispatch('getContentCategory',{id:data})
     },
   },
   computed:{
@@ -41,7 +41,15 @@ export default {
     },
   },
   mounted(){
-      this.getContentCategory();
   },
+  watch: { 
+      '$route.params.id': {
+          handler: function() {
+            this.getContentCategory(this.$route.params.id);
+          },
+          deep: true,
+          immediate: true
+        }
+  }
 }
 </script>

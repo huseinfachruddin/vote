@@ -49,7 +49,7 @@
               <v-list-item v-if="menu.item.children.length">
                 <v-list-item-title>{{menu.item.name}}</v-list-item-title>
               </v-list-item> 
-              <router-link v-if="!menu.item.children.length" :to="{name: 'category',params:{ id: menu.item.id }}" style="text-decoration: none;">
+              <router-link v-if="!menu.item.children.length" :key="$route.fullPath" :to="{name: 'category',params:{ id: menu.item.id,name:menu.item.name }}" style="text-decoration: none;">
               <v-list-item>
                 <v-list-item-title >{{menu.item.name}}</v-list-item-title>
               </v-list-item> 
@@ -112,7 +112,6 @@
     },
     mounted() {
       this.getCategoryTree()
-      console.log(this.menu)
     },
   }
 </script>

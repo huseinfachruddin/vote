@@ -25,7 +25,7 @@ const routes = [
     }
   },
   {
-    path: '/content/category/:id',
+    path: '/content/category/:id/:name',
     name: 'category',
     component: Category,
     meta:{
