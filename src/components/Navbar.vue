@@ -1,23 +1,40 @@
 <template>
-<div id="navbar">
-    <v-toolbar 
-    color="yellow accent-4">
-    <v-app-bar-nav-icon @click.stop="drawer = !drawer" ></v-app-bar-nav-icon>
-      <v-spacer></v-spacer>
-      <v-toolbar-title class="d-flex justify-center">
-          <v-img 
-          max-width="40"
-          src="../assets/hmj.png" />
-      <h3 class="ma-1 black--text">PERPUSPOL</h3>
-      </v-toolbar-title> 
-      <v-spacer></v-spacer>
+<div>
+  <v-bottom-navigation
+      color="primary"
+      fixed
+      background-color="#cfebfc"
+      shift
+    >
+      <v-btn :href="'/'">
+        <span>beranda</span>
 
-    </v-toolbar>
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
+
+      <v-btn :href="'/post'">
+        <span>sedang hangat</span>
+
+        <v-icon>mdi-fire</v-icon>
+      </v-btn>
+      <v-btn :href="'/create/post'">
+        <span>laporan</span>
+
+        <v-icon>mdi-pencil</v-icon>
+      </v-btn>
+      <v-btn @click.stop="drawer = !drawer">
+        <span>menu</span>
+
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
+
       <v-navigation-drawer
       v-model="drawer"
-      absolute
-      left
-      temporary
+      fixed
+      bottom
+      height="auto"
+      
     >
       <v-list
         nav
@@ -27,38 +44,48 @@
           v-model="group"
           active-class="deep-yellow--text text--accent-4"
         >
-      <v-list-item class="yellow">
+      <router-link to="/profile" style="text-decoration: none;">
+      <v-list-item style="background-color:#cfebfc">
         <v-list-item-content >
+          <v-list-item class="px-1">
+            <v-list-item-avatar>
+              <v-img src="https://randomuser.me/api/portraits/women/85.jpg"></v-img>
+            </v-list-item-avatar>
+          </v-list-item>
           <v-list-item-title class="text-h6">
-            PERPUSPOL
+            Husein Fachruddin
           </v-list-item-title>
           <v-list-item-subtitle>
-            menu
+            husein.fac18@gmail.com
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-
+      </router-link>
       <v-divider></v-divider>
-      <router-link to="/" style="text-decoration: none;">
+      <router-link to="/profile" style="text-decoration: none;">
               <v-list-item>
-                <v-list-item-title >HOME</v-list-item-title>
+                <v-icon>
+                  mdi-account
+                </v-icon>
+                <v-list-item-title >profile</v-list-item-title>
               </v-list-item> 
-              </router-link>
-        <v-treeview :items="menu" open-on-click>
-            <template v-slot:label="menu">
-              <v-list-item v-if="menu.item.children.length">
-                <v-list-item-title>{{menu.item.name}}</v-list-item-title>
-              </v-list-item> 
-              <router-link v-if="!menu.item.children.length" :key="$route.fullPath" :to="{name: 'category',params:{ id: menu.item.id,name:menu.item.name }}" style="text-decoration: none;">
+      </router-link>
               <v-list-item>
-                <v-list-item-title >{{menu.item.name}}</v-list-item-title>
+                <v-icon>
+                 mdi-wrench
+                </v-icon>
+                <v-list-item-title >setting</v-list-item-title>
+              </v-list-item>
+              <v-list-item class="red--text" @click="logout()">
+                <v-icon class="red--text" color="error">
+                  mdi-logout
+                </v-icon>
+                <v-list-item-title >keluar</v-list-item-title>
               </v-list-item> 
-              </router-link>
-            </template>
-        </v-treeview>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
+
   </div>
 </template>
 
@@ -68,6 +95,8 @@
 
 
 <script>
+import router from '../router'
+
   export default {
     data: () => ({
       drawer: false,
@@ -84,34 +113,16 @@
         }]
     }),
     computed:{
-      category(){
-        return this.$store.state.category.category;
-      },
-      menu(){
-        return this.$store.state.category.menu;
-      },
-      form(){
-        return this.$store.state.content.form;
-      },
-      errors(){
-        return this.$store.state.content.errors;
-      },
+
     },
     methods:{
-      getCategory(){
-        this.$store.dispatch('getCategory')
-      },
-      getCategoryTree(){
-        this.$store.dispatch('getCategoryTree')
-      },
-      async save(form){
-        await this.$store.dispatch('createContent',form)
-        await this.getContent()
-        this.loading=false
-      },
+      logout(){
+        if (confirm('Yakin akan keluar?')){
+          localStorage.removeItem('token')
+          router.push('/login')
+        }
+      }
     },
-    mounted() {
-      this.getCategoryTree()
-    },
+
   }
 </script>

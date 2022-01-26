@@ -1,53 +1,25 @@
 <template>
-<app>
   <v-container>
-      <v-parallax
-        dark
-        src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-      >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col
-            class="text-center"
-            cols="12"
-          >
-            <h1 class="text-h4 font-weight-thin mb-4">
-              Hallo, Politikus Muda
-            </h1>
-            <h4 class="subheading">
-              Temukan pengetahuan yang kau butuhkan disini
-            </h4>
-              <v-btn
-                href="https://drive.google.com/drive/folders/1h8XQBoUzfP7gvJVuJ3bpM6-NUJd8_MSQ?usp=sharing"
-                class="ma-2"
-                outlined
-                color="yellow"
-              >
-                Download Versi Android
-              </v-btn>
-          <Sos/>
-          </v-col>
-        </v-row>
-      </v-parallax>
+    <v-container>
+      <Sheet/>
+    </v-container>
+    <v-container>
+      <router-link style="text-decoration:none" v-for="data in 5" :key="data" :to="'/post/'+data"><Post class="mb-3"/></router-link>
+    </v-container>
   </v-container>
-        <Content/>
-</app>
 </template>
 
 <script>
-import Content from '../components/Content.vue'
-import Sos from '../components/Sos.vue'
-
+import Sheet from '../components/Sheet.vue'
+import Post from '../components/Post/Post.vue'
 
 export default {
   components:{
-  Sos,
-  Content
+    Sheet,
+    Post
   },
   mounted(){
-      this.$store.dispatch('getContentCategory',this.$route.params.id)
-  },
+    
+  }
 }
 </script>

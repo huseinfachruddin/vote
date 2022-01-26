@@ -1,33 +1,35 @@
 <template>
   <v-app>
-    <Navbar/>
-    <v-container fluid class="bg" >
-          <router-view temporary/>
+    <v-container>
+      <Header v-if="$route.name!='login' && $route.name != 'register'"/>
+    </v-container>
+    <v-container class="mt-5">
+      <Navbar v-if="$route.name!='login' && $route.name != 'register' "/>
+      <router-view temporary/>
+      <Loading />
     </v-container>
   </v-app>
 </template>
 
 <style>
-.bg{
-    background: url('https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    font-family: "Georgia", "Courier New", monospace;
-    height: 100%;
-  }
-router-link a{
-    text-decoration: none ;
+
+#app,body {
+  background-color: rgb(236, 247, 252);
+  height: auto;
 }
+
 </style>
 
 <script>
 import Navbar from './components/Navbar'
-
+import Header from './components/Header'
+import Loading from './components/Loading'
 export default {
   components:{
     Navbar,
+    Header,
+    Loading
+
   }
 
 };

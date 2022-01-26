@@ -1,10 +1,10 @@
 <template>
-      <v-progress-linear
-      v-if="loading"
-      indeterminate
-      color="cyan"
-    ></v-progress-linear>
-
+    <v-overlay :value="loading">
+      <v-progress-circular
+        indeterminate
+        size="60"
+      ></v-progress-circular>
+    </v-overlay>
 </template>
 
 <script>
@@ -14,10 +14,11 @@ export default {
         }
     },
     mounted(){
+
     },
     computed:{
         loading(){
-            return this.$store.state.auth.loading            
+            return this.$store.state.loading           
         },
     }
 
